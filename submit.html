@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Submit Prescriptions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+         <link href="css/dropzone.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+        .dz-started .dz-message {
+            display: none !important;
+        }
+        .wizard .content {
+            min-height: 100px;
+        }
+        .wizard .content > .body {
+            width: 100%;
+            height: auto;
+            padding: 15px;
+            position: absolute;
+        }
+        .wizard .content .body.current {
+            position: relative;
+        }
+        </style>
+    </head>
+    <body data-smooth-scroll-offset="77">
+        <div class="nav-container"> </div>
+        <div class="main-container">
+            <a id="header" class="in-page-link"></a>
+            <section>
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <h1>Submit Prescriptions</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-8">
+                            <div id="process-wizard" class="wizard active">
+                                <h5>Identity</h5>
+                                <section>
+                         <!--            <form action="/upload" class="dropzone needsclick" style="width: 100%; height: 100%;" id="demo-upload"> -->
+                                    <div id="dropzone" style="width: 100%; height: 100%; min-height: 35em;">
+                                        <!--  <form action="/upload" class="needsclick" style="width: 100%; height: 100%;" id="demo-upload"> -->
+                                         <div class="dz-message needsclick" style="text-align:center; padding-top: 35%;" >
+                                            Drag &amp; Drop a Photo of either your <strong>Passport</strong> or your <strong>Driver's License</strong><br />
+                                            <span class="note needsclick">(This is just a demo. Selected files are <strong>not</strong> actually uploaded.)</span>
+                                          </div>
+                                    </div>
+         <!--                            <h5>Drop Files Here to Upload</h5> -->
+                                 <!--    <form style="width: 100%; height: 100%;" action="/post.html" class="dropzone" id="my-awesome-dropzone"></form> -->
+                                   <!--  <div class="pos-vertical-center">
+                                        <h4>Welcome to the Wizard, using jQuery Steps</h4>
+                                    </div> -->
+                                </section>
+                                <h5>Eligibility</h5>
+                                <section class="">
+                                    <form>
+                                        <h4>Belongs To:</h4>
+                                        <div class="input-select">
+                                            <select name="belongsTo" id="belongsTo">
+                                                <option selected="" value="Default">Me</option>
+                                                <option value="Small">Minor under My Care</option>
+                                                <option value="Medium">Deceased Family Member</option>
+                                                <option value="Larger">Other</option>
+                                            </select>
+                                        </div>
+                                         <p class="">Please select the option that describes the relationship in terms of the ownership of the perscriptions.</p>
+                                    </form>
+                                </section>
+                                <h5>Quantity</h5>
+                                <section>
+                                    <form>
+                                        <div class="dynamic-stuff">
+                                        <!-- Dynamic element will be cloned here -->
+                                        <!-- You can call clone function once if you want it to show it a first element-->
+                                        </div>
+                                        <div class="form-group dynamic-element" style="display:none">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="drugType">Drug Type:</label>
+                                           
+                                                        <select id="drugType" name="drugType" class="form-control" placeholder="Drug Type">
+                                                            <option value="1">Codeine</option>
+                                                            <option value="2">Fentanyl</option>
+                                                            <option value="3">Amphetamine</option>
+                                                            <option value="4">Hydrocodone</option>
+                                                            <option value="5">Dihydrocodeinone</option>
+                                                            <option value="6">Oxycodone</option>
+                                                            <option value="7">Methylphenidate</option>
+                                                            <option value="8">Morphine</option>
+                                                            <option value="9">Other</option>
+                                                        </select>
+                                        
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="drugAmount">Drug Amount:</label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control" id="drugAmount" name="drugAmount" placeholder="Amount">
+                                                        <div class="input-group-append">
+                                                            <div class="input-group-text">mg</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                    <a class="btn btn-danger btn--icon delete" style="color: white !important">
+                                                        <span class="btn__text" style="color: white !important;"><i class="icon-Close" style="color: white !important;"></i> Delete Entry</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-12" style="text-align: center; width: 100%; margin-top: 1.5em; padding-right: 0px; padding-left:0px;">
+                                            <a class="btn btn--primary type--uppercase add-one" style="width: 100%">
+                                                <span class="btn__text">Add Prescription</span>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </section>
+                                <h5>Payment</h5>
+                                <section class="text-center">
+                                    <h4 style="margin-top: 1em">Based on the information provided we can give you <br><strong style="margin-top: 5px; margin-bottom: 5px;">$32.56</strong><br>in Gift Cards</h4>
+                                </section>
+                                <h5>Location</h5>
+
+                                <section>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label for="location">Location:</label>
+                                                <select id="location" name="location" class="form-control" placeholder="Drop-Off Location">
+                                                    <option value="1">West Haven - Police Station</option>
+                                                    <option value="2">Hartford - CVS</option>
+                                                    <option value="3">West Haven - Walgreens</option>
+                                                    <option value="4">New London - Police Station</option>
+                                                    <option value="5">New Haven - Police Station</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="time">Time:</label>
+                                                <select id="time" name="time" class="form-control" placeholder="Time">
+                                                    <option value="1">8 AM - 10 AM</option>
+                                                    <option value="2">10 AM - 12 PM</option>
+                                                    <option value="3">12 PM - 2PM</option>
+                                                    <option value="4">2 PM - 4PM</option>
+                                                    <option value="5">4 PM - 6PM</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+        </div>
+        <div id="preview-template" style="display: none;">
+    
+    <div class="dz-preview dz-file-preview">
+      <div class="dz-image"><img data-dz-thumbnail /></div>
+
+      <div class="dz-details">
+        <div class="dz-size"><span data-dz-size></span></div>
+        <div class="dz-filename"><span data-dz-name></span></div>
+      </div>
+      <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+      <div class="dz-error-message"><span data-dz-errormessage></span></div>
+    </div>
+  </div>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/parallax.js"></script>
+        <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/jquery.steps.min.js"></script>
+        <script src="js/dropzone.js"></script>
+        <!-- <script src="js/scripts.js"></script> -->
+        <script>
+
+            function init() {
+                $("#process-wizard").steps({
+                    headerTag: "h5",
+                    bodyTag: "section",
+                    transitionEffect: "slideLeft",
+                    autoFocus: true
+                  });
+                var dropzone = new Dropzone('#dropzone', {
+                    previewTemplate: document.querySelector('#preview-template').innerHTML,
+                    parallelUploads: 2,
+                    thumbnailHeight: 120,
+                    thumbnailWidth: 120,
+                    maxFilesize: 3,
+                    filesizeBase: 1000,
+                    url: 'upload',
+                    thumbnail: function(file, dataUrl) {
+                      if (file.previewElement) {
+                        file.previewElement.classList.remove("dz-file-preview");
+                        var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+                        for (var i = 0; i < images.length; i++) {
+                          var thumbnailElement = images[i];
+                          thumbnailElement.alt = file.name;
+                          thumbnailElement.src = dataUrl;
+                        }
+                        setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
+                      }
+                    }
+
+                  });
+
+                var minSteps = 6,
+                  maxSteps = 60,
+                  timeBetweenSteps = 100,
+                  bytesPerStep = 100000;
+
+              dropzone.uploadFiles = function(files) {
+                var self = this;
+
+                for (var i = 0; i < files.length; i++) {
+
+                  var file = files[i];
+                      totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
+
+                  for (var step = 0; step < totalSteps; step++) {
+                    var duration = timeBetweenSteps * (step + 1);
+                    setTimeout(function(file, totalSteps, step) {
+                      return function() {
+                        file.upload = {
+                          progress: 100 * (step + 1) / totalSteps,
+                          total: file.size,
+                          bytesSent: (step + 1) * file.size / totalSteps
+                        };
+
+                        self.emit('uploadprogress', file, file.upload.progress, file.upload.bytesSent);
+                        if (file.upload.progress == 100) {
+                          file.status = Dropzone.SUCCESS;
+                          self.emit("success", file, 'success', null);
+                          self.emit("complete", file);
+                          self.processQueue();
+                        }
+                      };
+                    }(file, totalSteps, step), duration);
+                  }
+                }
+              }
+
+              $('.add-one').click(function(){
+                  $('.dynamic-element').first().clone().appendTo('.dynamic-stuff').show();
+                  attach_delete();
+                });
+
+
+                //Attach functionality to delete buttons
+                function attach_delete(){
+                  $('.delete').off();
+                  $('.delete').click(function(){
+                    console.log("click");
+                    $(this).closest('.form-group').remove();
+                  });
+                }
+          }
+
+          document.addEventListener("DOMContentLoaded", init);
+            // var myDropzone = new Dropzone("div#identityDropzone", { url: "/file/post"});
+            // console.log(myDropzone);
+            //$("#identityDropzone").dropzone({ url: "/file/post" });
+        </script>
+    </body>
+
+</html>
