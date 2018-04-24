@@ -117,8 +117,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12" style="margin-top: 10px;">
-                                                    <a class="btn btn-danger btn--icon delete" style="color: white !important">
+                                                <div class="col-md-6">
+                                                    <label for="pillCount">Pill Count:</label>
+                                                    
+                                                        <input type="number" class="form-control" id="pillCount" name="pillCount" placeholder="Pill Count">
+                                                     
+                                                </div>
+                                                <div class="col-md-6" style="margin-top: 10px;">
+                                                    <a class="btn btn-danger btn--icon delete" style="color: white !important; position: relative !important;
+    top: 100% !important;
+    transform: translateY(-100%) !important;">
                                                         <span class="btn__text" style="color: white !important;"><i class="icon-Close" style="color: white !important;"></i> Delete Entry</span>
                                                     </a>
                                                 </div>
@@ -134,7 +142,9 @@
                                 </section>
                                 <h5>Payment</h5>
                                 <section class="text-center">
-                                    <h4 style="margin-top: 1em">Based on the information provided we can give you <br><strong style="margin-top: 5px; margin-bottom: 5px;">$32.56</strong><br>in Gift Cards</h4>
+                                    <h4 style="margin-top: 1em">Based on the information provided we can give you <br><strong style="margin-top: 5px; margin-bottom: 5px;" id="totalDrugNumber">$32.56</strong><br>in Gift Cards</h4>
+                                    <a class="btn btn--primary type--uppercase" id="calculateTotalBtn" style="color: white !important;
+                                " onclick="computeTotal()">Calculate</a>
                                 </section>
                                 <h5>Location</h5>
 
@@ -194,6 +204,10 @@
         <script>
 
             function init() {
+
+                $("#calculateTotalBtn").click(function() {
+                    computeTotal();
+                });
                 $("#process-wizard").steps({
                     headerTag: "h5",
                     bodyTag: "section",
@@ -273,9 +287,32 @@
                     $(this).closest('.form-group').remove();
                   });
                 }
+
+            
           }
 
-          document.addEventListener("DOMContentLoaded", init);
+        function computeTotal() {
+            console.log("Compute Called");
+
+            var total = 0.0;
+            $(".dynamic-stuff .dynamic-element").each(function (index) {
+                console.log(this);
+                var drugType = $(this).find("#drugType").val();
+                var drugQuanity = $(this).find("#drugAmount").val();
+                var pillCount = $(this).find("#pillCount").val();
+                total += drugType*3*(drugQuanity*0.1);
+                console.log({
+                    drugType: drugType,
+                    drugQuanity: drugQuanity,
+                    pillCount: pillCount
+                });
+                
+            });
+
+            $("#totalDrugNumber").text("$" + parseFloat(Math.round(total * 100) / 100).toFixed(2));
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
             // var myDropzone = new Dropzone("div#identityDropzone", { url: "/file/post"});
             // console.log(myDropzone);
             //$("#identityDropzone").dropzone({ url: "/file/post" });
